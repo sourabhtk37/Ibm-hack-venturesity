@@ -19,35 +19,39 @@ def mapview():
              'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
              'lat': 37.4419,
              'lng': -122.1419,
-             'infobox': "<b>Store-1</b></br><button>Chat</button>"
+             'infobox': "<b>Walmart</b></br><p>Tomato : $5</br>Onion: $5</p><button>Chat</button>"
           },
           {
              'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
              'lat': 37.4300,
              'lng': -122.1400,
-             'infobox': "<b>Store-2</b></br><button>chat</button>"
+             'infobox': "<b>Mega Buy</b></br><p>PS4-collective : $499 </br>Xbox-Forza Edition : $599</p><button>chat</button>"
 
           }
         ]
     )
+    #watson()
+    #take_message()
+    #message()
     return render_template('map.html', sndmap=sndmap)
+
 
 @app.route("/")
 def  watson():
     conversation = ConversationV1(
-    username='{oNPRR3mnN1IZ}',
-    password='{4c126ddb-cd75-4151-80f6-2de0dcfcffc6}',
+    username='{<api-key>}',
+    password='{api-key}',
     version='2016-09-20'
     )
 
     # Replace with the context obtained from the initial request
     context = {}
 
-    workspace_id = '05c6fbdc-15fb-4b64-9098-c92183978b18'
+    workspace_id = '<api-key>'
 
     response = conversation.message(
       workspace_id=workspace_id,
-      message_input={'text': 'Turn on the lights'},
+      message_input={'text': 'Buy me a PS4'},
       context=context
     )
 
@@ -60,7 +64,7 @@ def take_message():
 
 @app.route('/')
 def message():
-    return render_template('message.html', message=session['message'])    
+    return render_template('message.html', message="Buy me tomato")    
 
 if __name__ == "__main__":
     app.run(debug=True)
