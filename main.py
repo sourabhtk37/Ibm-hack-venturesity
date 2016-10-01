@@ -19,7 +19,7 @@ def mapview():
              'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
              'lat': 37.4419,
              'lng': -122.1419,
-             'infobox': "<button >Chat</button>"
+             'infobox': "<b>Store-1</b><button>Chat</button>"
           },
           {
              'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
