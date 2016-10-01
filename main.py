@@ -19,7 +19,7 @@ def mapview():
              'icon': 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
              'lat': 37.4419,
              'lng': -122.1419,
-             'infobox': "<b>Store-1</b></br><button>chat</button>"
+             'infobox': "<button >Chat</button>"
           },
           {
              'icon': 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
@@ -52,6 +52,15 @@ def  watson():
     )
 
     print(json.dumps(response, indent=2))	
+
+@app.route('/', methods=['POST'])
+def take_message():
+    session['message'] = request.form['message']
+    return redirect(url_for('message'))
+
+@app.route('/')
+def message():
+    return render_template('message.html', message=session['message'])    
 
 if __name__ == "__main__":
     app.run(debug=True)
